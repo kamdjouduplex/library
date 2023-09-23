@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BooksController;
 
@@ -18,5 +19,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/books',  [BooksController::class, 'index'])->name('list_book');
 Route::post('/books', [BooksController::class, 'store'])->name('add_book');
 Route::patch('/books/{book}', [BooksController::class, 'update'])->name('update_book');
+Route::delete('/books/{book}', [BooksController::class, 'destroy'])->name('delete_book');
+
+Route::post('/author', [AuthorController::class, 'store'])->name('add_author');
